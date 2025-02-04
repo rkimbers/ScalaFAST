@@ -46,4 +46,28 @@ case class OrderNode(
 
     def kind(): MsgKind = kind()
 
+    def remove(): Unit = {
+    priceNode.pop()
+    guidNode.pop()
+    }
+
+    override def toString: String = {
+    if (this == null) "<nil>"
+    else {
+      val priceStr = formatWithComma(price)
+      val amountStr = formatWithComma(amount)
+      val traderIdStr = formatWithDash(traderId)
+      val tradeIdStr = formatWithDash(tradeId)
+      val stockIdStr = formatWithDash(stockId)
+      s"$kind, price $priceStr, amount $amountStr, trader $traderIdStr, trade $tradeIdStr, stock $stockIdStr"
+        }
+    }
+
+    private def highInt32(value: Long): Int = (value >> 32).toInt
+    private def lowInt32(value: Long): Int = value.toInt
+    private def combineInt32(high: Int, low: Int): Long = ((high.toLong << 32) | (low & 0xFFFFFFFFL))
+
+    private def formatWithComma(value: Long): String = f"$value%,d"
+    private def formatWithDash(value: Int): String = f"$value%-d"
+
 }
