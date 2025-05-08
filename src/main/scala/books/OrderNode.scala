@@ -26,8 +26,8 @@ case class OrderNode(
     }
 
     def setup(price: Long, guid: Long): Unit = {
-        initNode(this, price, priceNode, guidNode)
-        initNode(this, guid, guidNode, priceNode)
+        priceNode.init(this, price)
+        guidNode.init(this, guid)
     }
     
     def price: Long = priceNode.value
@@ -46,7 +46,7 @@ case class OrderNode(
 
     def stockId: Long = stockId
 
-    def kind: MsgKind = kind()
+    def kind: MsgKind = kind
 
     def remove(): Unit = {
     priceNode.pop()
