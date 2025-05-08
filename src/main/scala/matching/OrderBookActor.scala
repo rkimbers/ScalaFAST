@@ -1,6 +1,4 @@
-package books
-
-sealed trait OrderMessage
+package matching
 
 class OrderBookActor {
 
