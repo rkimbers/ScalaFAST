@@ -1,0 +1,5 @@
+package books
+
+class Node {
+
+}
