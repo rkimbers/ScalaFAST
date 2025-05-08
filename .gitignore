@@ -11,11 +11,18 @@ hs_err_pid*
 
 # sbt specific
 target/
+project/metals.sbt
 project/target/
+project/project/
 project/.metals/
 
 # VSCode requirements
 .vscode
 
+# IDEA requirements
+project
+.idea
+
 # Metals specific
 .metals
+.bsp
